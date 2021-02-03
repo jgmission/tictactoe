@@ -36,6 +36,7 @@ import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.util.Collections;
+import java.util.Date;
 
 /**
  * A simple WebSocketServer implementation. Keeps track of a "chatroom".
@@ -81,7 +82,7 @@ public class ChatServer extends WebSocketServer {
     public void onMessage(WebSocket conn, ByteBuffer message) {
         messagesReceived++;
         if (messagesReceived % 100 == 0) {
-            System.out.printf("messagesReceived = %d\n", messagesReceived);
+            System.out.printf("%s\tmessagesReceived = %d\n", (new Date()), messagesReceived);
         }
     }
 

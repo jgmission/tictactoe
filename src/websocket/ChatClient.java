@@ -35,6 +35,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ChatClient extends JFrame implements ActionListener {
@@ -194,6 +195,8 @@ public class ChatClient extends JFrame implements ActionListener {
             start.setEnabled(true);
         } else if (e.getSource() == close) {
             cc.close();
+            start.setEnabled(false);
+            stop.setEnabled(false);
         }
     }
 
@@ -208,7 +211,7 @@ public class ChatClient extends JFrame implements ActionListener {
                 Thread.sleep(1);
             }
             if (i % 100 == 0) {
-                System.out.printf("sent = %d\n", i);
+                System.out.printf("%s\tsent = %d\n", (new Date()), i);
                 if (stopSending.get()) {
                     break;
                 }
